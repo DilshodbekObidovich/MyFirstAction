@@ -3,12 +3,21 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\MyListController;
 use App\Repository\MyListRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  collectionOperations={
+ *      "get",
+ *      "post"= {
+ *          "controller"= MyListController::class
+ * }
+ * }
+ * )
  * @ORM\Entity(repositoryClass=MyListRepository::class)
+ * @see MyListController 
  */
 class MyList
 {
